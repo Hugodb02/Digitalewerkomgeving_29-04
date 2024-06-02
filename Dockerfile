@@ -1,10 +1,5 @@
-FROM image-opdracht as builder
+FROM nginx:latest
 
-RUN date -u > /buildtime.txt
-
-FROM nginx
-
-COPY --from=builder /buildtime.txt /usr/share/nginx/html/buildtime.txt
-COPY html /usr/share/nginx/html
+COPY ./usr/share/nginx/html
 
 EXPOSE 80
